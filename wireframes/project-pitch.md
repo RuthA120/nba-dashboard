@@ -1,10 +1,10 @@
 # 🏀 NBA Dashboard – Project Pitch
 
-📅 **Date:** 05/25/2025
+**Date:** 05/25/2025
 
 ---
 
-## 📘 Overview
+## Overview
 
 **NBA Dashboard** is a full-stack web application that blends sports analytics, social networking, and machine learning. Built from the ground up, it enables NBA fans to engage with data in a meaningful, interactive way.
 
@@ -14,9 +14,9 @@ This project highlights my end-to-end capabilities in designing and engineering 
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
-### 👥 User Experience / Social Networking
+### User Experience / Social Networking
 - Full account creation and login/logout system
 - Personalized user dashboard
 - Player and team profile pages
@@ -26,14 +26,14 @@ This project highlights my end-to-end capabilities in designing and engineering 
 
 ---
 
-### 🧠 Machine Learning / AI Features
+### Machine Learning / AI Features
 
-#### 🏆 MVP Builder
+#### MVP Builder
 - Users can build hypothetical MVP candidates by inputting custom player stats
 - Model returns a **probability or confidence score** that the player would win MVP
 - Allows comparison of the MVP build against real players to find the **most similar match**
 
-#### 🔍 Player Similarity Engine
+#### Player Similarity Engine
 - Users can explore players who are statistically similar to a selected player
 - Similarity results show:
   - Similarity percentage
