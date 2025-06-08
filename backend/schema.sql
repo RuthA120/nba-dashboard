@@ -86,6 +86,7 @@ CREATE TABLE mvp_predictions (
 CREATE TABLE similar_players (
     id INT AUTO_INCREMENT PRIMARY KEY,
     player_id INT,
+    
     similar_player_id INT,
     similarity_score FLOAT,
     explanation TEXT,
