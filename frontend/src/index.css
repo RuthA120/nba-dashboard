@@ -25,9 +25,10 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* full screen height */
+  background-color: white;
 }
 
 h1 {
@@ -65,4 +66,23 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.fade-slide-enter {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-slide-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+.fade-slide-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-slide-exit-active {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
 }
