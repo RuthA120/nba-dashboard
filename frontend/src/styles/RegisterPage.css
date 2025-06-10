@@ -57,3 +57,86 @@ html, body {
     align-content: center;
 }
 
+.header{
+    color: white;
+    font-size: 2.0em;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.username-header{
+    color: white;
+    font-size: 1.3em;
+    margin-right: 200px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+.username-input{
+    width: 70%;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    background-color: white;
+    padding-left: 10px;
+    font-size: 1em;
+    margin-top: -15px;
+}
+
+.email-header{
+    color: white;
+    font-size: 1.3em;
+    margin-right: 250px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.email-input{
+    width: 70%;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    background-color: white;
+    padding-left: 10px;
+    font-size: 1em;
+    margin-top: -15px;
+}
+
+.password-header{
+    color: white;
+    font-size: 1.3em;
+    margin-right: 210px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.password-input{
+    width: 70%;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    background-color: white;
+    padding-left: 10px;
+    font-size: 1em;
+    margin-top: -15px;
+}
+
+#register{
+    background-color: #FF5757;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 40px;
+    margin-top: 20px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+
