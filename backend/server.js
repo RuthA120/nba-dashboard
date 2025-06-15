@@ -1,3 +1,5 @@
+// This file starts the backend server and sets up the API routes.
+
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config(); // loads your .env values
@@ -16,7 +18,7 @@ app.use('/api/similarity', require('./routes/similarity'));
 app.use('/api/groups', require('./routes/groups'));
 app.use('/api/favorites', require('./routes/favorites'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5173;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

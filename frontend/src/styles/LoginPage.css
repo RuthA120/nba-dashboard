@@ -1,0 +1,195 @@
+.login-page {
+  display: flex;
+  flex-direction: row; 
+  width: 100vw;
+  min-height: 100vh;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.side-login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.login-line{
+    width: 70%;
+    height: 2px;
+    background-color: white;
+}
+
+.login-box {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: #354CA1; 
+  padding: 0; 
+}
+
+
+.login-form-container {
+  flex: 1 1 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-width: 450px; 
+}
+
+.login-form-box {
+  width: 450px;
+  background-color: #354CA1;
+  height: 400px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  margin-top: 80px;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-avatar {
+  position: absolute;
+  top: 50px; 
+  width: 120px; 
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.login-header {
+  font-size: 2em;
+  letter-spacing: 3px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: -5px;
+  text-align: center;
+  color: white;
+}
+
+.login-username-header,
+.login-password-header {
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 225px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+
+.username-login-input,
+.password-login-input {
+  background-color: white;
+  width: 75%;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  margin-left: 5px;
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+.login-button {
+  background-color: #568259;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 40px;
+  width: 100%;
+  max-width: 200px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  align-self: center;
+  margin-top: 15px;
+}
+
+.login-options{
+    display: flex;
+    gap: 30px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.loginpage-link {
+  color: white;
+  text-decoration: underline;
+  margin-top: 10px;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .login-page {
+    flex-direction: column;
+    background-color: #354CA1;
+  }
+
+  .login-box {
+    display: none; 
+  }
+
+  .login-form-container {
+    flex: 1 1 100%;
+    width: 100%;
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #354CA1;
+  }
+
+  .login-form-box {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background-color: #354CA1;
+    border-radius: 0px;
+  }
+
+  .login-avatar {
+    margin: 0 auto;
+    margin-top: -10px;
+    position: static;
+  }
+
+  .login-username-input,
+  .login-password-input {
+    margin-left: 0;
+    width: 80%;
+    position: static
+  }
+
+  .login-username-header,
+  .login-password-header {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .login-button {
+    margin: 20px auto;
+    display: block;
+  }
+
+  .loginpage-link {
+    margin-top: -5px;
+    text-align: center;
+  }
+}
+
