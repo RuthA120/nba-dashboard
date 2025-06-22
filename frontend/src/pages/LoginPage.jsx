@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.css';
 import myLoginImage from '../assets/Login-IMG.jpg';
 import myLoginAvatar from '../assets/Login-Avatar.png';
+import { loginUser } from '../api/auth';
+import { supabase } from '../lib/supabaseClient'; // your supabase client import
 
 export default function Login() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,21 +18,23 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:5173/api/users/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
+    console.log('Attempting login with:', formData);
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: formData.email,
+      password: formData.password,
     });
 
-    const data = await res.json();
-    if (res.ok) {
-      alert('Login successful!');
-      localStorage.setItem('token', data.token);
-    } else {
-      alert(data.message || 'Login failed');
+    if (error) {
+      console.error('Login error:', error);
+      setError(error.message);
+      alert('Login failed: ' + error.message);
+      return;
     }
+
+    console.log('Login successful:', data);
+    setError(null);
+    navigate('/dashboard');
   };
 
   return (
@@ -48,11 +51,11 @@ export default function Login() {
               <h2 className="login-header">Welcome Back!</h2>
               <hr className="login-line"></hr>
     
-              <h3 className ="login-username-header">Username</h3>
-              <input type="text" className="username-login-input" placeholder="Enter your username" onChange={handleChange} required/>
+              <h3 className ="login-email-header">Email</h3>
+              <input name="email" type="text" value={formData.email} className="email-login-input" placeholder="Enter your email" onChange={handleChange} required/>
     
               <h3 className ="login-password-header">Password</h3>
-              <input type="password" className="password-login-input" placeholder="Enter your password" onChange={handleChange} required/>
+              <input name="password" type="password" value={formData.password} className="password-login-input" placeholder="Enter your password" onChange={handleChange} required/>
           
               <button type="submit" className="login-button">Login</button>
             </form>

@@ -1,0 +1,15 @@
+.dashboard-nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #354CA1;
+}
+
+.dashboard-title{
+    color: white;
+    font-size: 20px;
+    left: 40px;
+    position: absolute;
+}
