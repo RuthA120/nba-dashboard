@@ -1,14 +1,20 @@
-// backend/db.js
-const mysql = require('mysql2/promise');
-require('dotenv').config();
+// This file is in charge of connecting Node.js to the MySQL database.
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
+const mysql = require('mysql');
+
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'MerkatoCode7*',   
+  database: 'nba_dashboard'    
 });
 
-module.exports = pool;
+db.connect((err) => {
+  if (err) {
+    console.error('DB connection failed:', err);
+  } else {
+    console.log('Connected to MySQL');
+  }
+});
+
+module.exports = db;

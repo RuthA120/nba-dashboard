@@ -1,29 +1,43 @@
-// backend/routes/users.js
-
 const express = require('express');
 const router = express.Router();
-const db = require('../db'); // MySQL connection
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const db = require('../db');
+
 
 // Register a new user
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
-  const sql = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
-  db.query(sql, [username, email, password], (err, result) => {
-    if (err) return res.status(500).json({ error: err });
-    res.status(201).json({ message: 'User is registered successfully', userId: result.insertId });
-  });
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10); // encrypt password
+    const sql = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+    db.query(sql, [username, email, hashedPassword], (err, result) => {
+      if (err) return res.status(500).json({ error: err });
+      res.status(201).json({ message: 'User registered', userId: result.insertId });
+    });
+  } catch {
+    res.status(500).json({ error: 'Registration failed' });
+  }
 });
 
 // Login user
 router.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  const sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
-  db.query(sql, [email, password], (err, results) => {
+  const { username, password } = req.body;
+  const sql = 'SELECT * FROM users WHERE username = ?';
+
+  db.query(sql, [email], async (err, results) => {
     if (err) return res.status(500).json({ error: err });
-    if (results.length === 0) return res.status(401).json({ message: 'Invalid credentials' });
-    res.status(200).json({ message: 'Login successful', user: results[0] });
+    if (results.length === 0) return res.status(401).json({ message: 'Username not found' });
+
+    const user = results[0];
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) return res.status(401).json({ message: 'Incorrect password' });
+
+    const token = jwt.sign({ id: user.id }, 'your_jwt_secret', { expiresIn: '1h' });
+    res.status(200).json({ message: 'Login successful', token });
   });
 });
+
 
 // Get user profile
 router.get('/:id', (req, res) => {
