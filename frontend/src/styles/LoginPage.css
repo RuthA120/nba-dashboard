@@ -47,23 +47,21 @@
 .login-form-box {
   width: 450px;
   background-color: #354CA1;
-  height: 400px;
+  height: 450px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 40px;
-  padding-bottom: 20px;
-  margin-top: 80px;
+  padding-bottom: 40px;
+  margin-top: 50px;
   transition: all 0.3s ease-in-out;
 }
 
 .login-avatar {
-  position: absolute;
-  top: 50px; 
+  position: relative;
+  top: -60px; 
   width: 120px; 
   height: 120px;
-  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -72,13 +70,13 @@
   font-size: 2em;
   letter-spacing: 3px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: -50px;
   margin-bottom: -5px;
   text-align: center;
   color: white;
 }
 
-.login-username-header,
+.login-email-header,
 .login-password-header {
   color: white;
   font-size: 1.2em;
@@ -89,15 +87,16 @@
 }
 
 
-.username-login-input,
+.email-login-input,
 .password-login-input {
   background-color: white;
-  width: 75%;
+  width: 100%;
   height: 50px;
   border-radius: 50px;
   border: none;
   margin-left: 5px;
   font-size: 1em;
+  color: black;
   margin-bottom: 5px;
 }
 
@@ -107,10 +106,13 @@
   padding: 12px 20px;
   border: none;
   border-radius: 40px;
+  position: relative;
+  top: 12px;
   width: 100%;
   max-width: 200px;
   cursor: pointer;
   font-size: 1.2em;
+  margin-left: 60px;
   font-weight: bold;
   align-self: center;
   margin-top: 15px;
@@ -145,9 +147,15 @@
     display: none; 
   }
 
+  .login-header{
+    margin-top: 130px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
   .login-form-container {
     flex: 1 1 100%;
-    width: 100%;
+    width: 768px;
     min-height: 100vh; 
     display: flex;
     justify-content: center;
@@ -164,19 +172,19 @@
   }
 
   .login-avatar {
-    margin: 0 auto;
-    margin-top: -10px;
-    position: static;
+    top: 140px;
+    position: absolute;
   }
 
-  .login-username-input,
+  .login-email-input,
   .login-password-input {
     margin-left: 0;
     width: 80%;
+    color: black;
     position: static
   }
 
-  .login-username-header,
+  .login-email-header,
   .login-password-header {
     margin-right: 0;
     text-align: center;

@@ -3,38 +3,37 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/RegisterPage.css';
 import myRegisterImage from '../assets/Register-IMG.jpg';
 import myRegisterAvatar from '../assets/Register-Avatar.png';
+import myBasketballDesign from '../assets/Basketball-Design.png';
+import { registerUser } from '../api/auth';
 
 export default function Register() {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  // New state to track showing confirmation modal
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:5173/api/users/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    });
+    const res = await registerUser(email, password);
 
-    const data = await res.json();
-    if (res.ok) {
-      alert('Registration successful!');
-      // maybe redirect to login page
+    if (res.success) {
+      // Show the confirmation modal with message
+      setModalMessage(res.message);
+      setShowConfirmModal(true);
     } else {
-      alert(data.error || 'Something went wrong');
+      alert('Error: ' + (res.message || 'Something went wrong.'));
     }
   };
-  
+
+  // Handler for button inside modal to redirect to login
+  const handleGoToLogin = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="page">
       <div className="box">
@@ -53,21 +52,59 @@ export default function Register() {
           />
           <h2 className="header">Create an Account</h2>
           <hr className="register-line"></hr>
-          <form onSubmit={handleSubmit}>
-            <h3 className ="username-header">Username</h3>
-            <input type="text" className="username-input" placeholder="Enter your username" onChange={handleChange} required />
 
+          <form onSubmit={handleSubmit}>
             <h3 className="email-header">Email</h3>
-            <input type="email" className="email-input" placeholder="Enter your email" onChange={handleChange} required />
+            <input type="email" className="email-input" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
             <h3 className ="password-header">Password</h3>
-            <input type="password" className="password-input" placeholder="Enter your password" onChange={handleChange} required />
+            <input type="password" className="password-input" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <button type="submit" className="register-button">Sign Up</button>
           </form>
 
           <a href="/login" className="login-link">Login to existing account</a>
         </div>
       </div>
+
+      {showConfirmModal && (
+        <div className="modal-overlay" style={modalOverlayStyle}>
+          
+          <div className="modal-content" style={modalContentStyle}>
+            <img src={myBasketballDesign} alt="Basketball Design" className="basketball-design" />
+            <p className="confirm-header">Thanks for signing up for NBADashboard!</p>
+            <p className="confirm-message">Please check your inbox for a confirmation email to complete your signup.
+                Make sure to also check your spam or junk folder.<br></br> If you are stuck please visit the Questions Page.</p>
+            <button 
+            className="login-direct" onClick={handleGoToLogin} style={modalButtonStyle}>
+              Go to Login
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
+// Simple inline styles for modal — replace with CSS as you like
+const modalOverlayStyle = {
+  position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+  backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex',
+  justifyContent: 'center', alignItems: 'center',
+  zIndex: 1000,
+};
+
+const modalContentStyle = {
+  backgroundColor: 'white',
+  padding: '2rem',
+  borderRadius: '8px',
+  textAlign: 'center',
+  maxWidth: '400px',
+  height: '470px'
+};
+
+const modalButtonStyle = {
+  marginTop: '1.5rem',
+  padding: '0.5rem 1rem',
+  fontSize: '1rem',
+  cursor: 'pointer',
+};
