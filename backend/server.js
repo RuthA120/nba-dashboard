@@ -11,12 +11,12 @@ app.use(express.json()); // allows backend to read JSON sent from frontend
 
 // Add routes
 app.use('/api/users', require('./routes/users'));
-app.use('/api/players', require('./routes/players'));
-app.use('/api/teams', require('./routes/teams'));
-app.use('/api/mvp', require('./routes/mvp'));
-app.use('/api/similarity', require('./routes/similarity'));
-app.use('/api/groups', require('./routes/groups'));
-app.use('/api/favorites', require('./routes/favorites'));
+// app.use('/api/players', require('./routes/players'));
+// app.use('/api/teams', require('./routes/teams'));
+// app.use('/api/mvp', require('./routes/mvp'));
+// app.use('/api/similarity', require('./routes/similarity'));
+// app.use('/api/groups', require('./routes/groups'));
+// app.use('/api/favorites', require('./routes/favorites'));
 
 const PORT = process.env.PORT || 5173;
 app.listen(PORT, () => {
