@@ -25,16 +25,32 @@ export default function Login() {
       password: formData.password,
     });
 
-    if (error) {
-      console.error('Login error:', error);
-      setError(error.message);
-      alert('Login failed: ' + error.message);
-      return;
-    }
+    const {
+      data: { session },
+      error: sessionError,
+    } = await supabase.auth.getSession();
 
-    console.log('Login successful:', data);
-    setError(null);
-    navigate('/dashboard');
+    const userId = session.user.id;
+
+    const { data: userProfile, error: profileError } = await supabase
+    .from('users')
+    .select('username')
+    .eq('auth_id', userId)
+    .single();
+
+
+    if (error) {
+      console.error('Error fetching username:', error);
+    } 
+    else {
+      const username = data?.username;
+      if (!username) {
+        navigate('/usernamecreation');
+      } 
+      else {
+        navigate('/dashboard');
+      }
+    }
   };
 
   return (
