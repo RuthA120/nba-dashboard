@@ -11,7 +11,7 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  // New state to track showing confirmation modal
+  
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
 
@@ -21,7 +21,6 @@ export default function Register() {
     const res = await registerUser(email, password);
 
     if (res.success) {
-      // Show the confirmation modal with message
       setModalMessage(res.message);
       setShowConfirmModal(true);
     } else {
@@ -29,7 +28,6 @@ export default function Register() {
     }
   };
 
-  // Handler for button inside modal to redirect to login
   const handleGoToLogin = () => {
     navigate('/login');
   };
@@ -67,15 +65,15 @@ export default function Register() {
       </div>
 
       {showConfirmModal && (
-        <div className="modal-overlay" style={modalOverlayStyle}>
+        <div className="modal-overlay">
           
-          <div className="modal-content" style={modalContentStyle}>
+          <div className="modal-content">
             <img src={myBasketballDesign} alt="Basketball Design" className="basketball-design" />
             <p className="confirm-header">Thanks for signing up for NBADashboard!</p>
             <p className="confirm-message">Please check your inbox for a confirmation email to complete your signup.
                 Make sure to also check your spam or junk folder.<br></br> If you are stuck please visit the Questions Page.</p>
             <button 
-            className="login-direct" onClick={handleGoToLogin} style={modalButtonStyle}>
+            className="login-direct" onClick={handleGoToLogin}>
               Go to Login
             </button>
           </div>
@@ -84,27 +82,3 @@ export default function Register() {
     </div>
   );
 }
-
-// Simple inline styles for modal — replace with CSS as you like
-const modalOverlayStyle = {
-  position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-  backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex',
-  justifyContent: 'center', alignItems: 'center',
-  zIndex: 1000,
-};
-
-const modalContentStyle = {
-  backgroundColor: 'white',
-  padding: '2rem',
-  borderRadius: '8px',
-  textAlign: 'center',
-  maxWidth: '400px',
-  height: '470px'
-};
-
-const modalButtonStyle = {
-  marginTop: '1.5rem',
-  padding: '0.5rem 1rem',
-  fontSize: '1rem',
-  cursor: 'pointer',
-};

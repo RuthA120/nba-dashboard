@@ -148,7 +148,7 @@
   }
 
   .login-header{
-    margin-top: 130px;
+    margin-top: 10px;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -172,8 +172,8 @@
   }
 
   .login-avatar {
-    top: 140px;
-    position: absolute;
+    top:  20px;
+    position: relative;
   }
 
   .login-email-input,
@@ -198,6 +198,15 @@
   .loginpage-link {
     margin-top: -5px;
     text-align: center;
+  }
+
+  .login-line{
+    width: 150%;
+    left: -60px;
+    top: -15px;
+    position: relative;
+    height: 2px;
+    background-color: white;
   }
 }
 
