@@ -4,9 +4,9 @@
 
 **NBA Dashboard** is a full-stack web application that blends sports analytics, social networking, and machine learning. Built from the ground up, it enables NBA fans to engage with data in a meaningful, interactive way.
 
-Users can create accounts, connect with friends, form groups, and favorite their favorite NBA players and teams. What sets this platform apart is its powerful integration of machine learning tools that provide smart insights and predictions based on real-world basketball data.
+Users can create accounts, connect with friends, form groups, and favorite their favorite NBA players and teams. What sets this platform apart is its powerful integration of machine learning tools that provide smart insights and predictions based on basketball data.
 
-This project highlights my end-to-end capabilities in designing and engineering both frontend and backend systems — along with integrating intelligent AI services.
+This project highlights my end-to-end capabilities in designing and engineering both frontend and backend systems — along with integrating  AI services.
 
 ---
 
